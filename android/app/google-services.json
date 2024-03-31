@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "457926547095",
+    "project_id": "maul-lagi-belajar",
+    "storage_bucket": "maul-lagi-belajar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457926547095:android:47c5b6d6fc798ca377bbd2",
+        "android_client_info": {
+          "package_name": "com.example.firebase_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZAC8RZzT016hFEhAeNme8MCUbboFU07w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457926547095:android:66f88e5c7fe499ab77bbd2",
+        "android_client_info": {
+          "package_name": "com.example.learn_about_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZAC8RZzT016hFEhAeNme8MCUbboFU07w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
