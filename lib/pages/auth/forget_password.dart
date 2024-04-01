@@ -3,15 +3,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SignUpPage extends StatelessWidget {
-  const SignUpPage({super.key});
+class ResetPassword extends GetView<ResetPassword> {
+  const ResetPassword({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final AuthController authC = Get.find();
+    final authC = Get.find<AuthController>();
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Register"),
+        title: Text("Reset Password"),
         centerTitle: true,
       ),
       body: Center(
@@ -21,15 +22,11 @@ class SignUpPage extends StatelessWidget {
               controller: authC.emailC,
               decoration: InputDecoration(hintText: 'email'),
             ),
-            TextFormField(
-              controller: authC.passwordC,
-              decoration: InputDecoration(hintText: 'password'),
-            ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 10),
               child: ElevatedButton(
-                  onPressed: () => authC.signUp(
-                      email: authC.emailC.text, password: authC.passwordC.text),
+                  onPressed: () =>
+                      authC.resetPassword(email: authC.emailC.text),
                   child: Text("Submit")),
             )
           ],
