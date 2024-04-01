@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_flutter/controller/auth_controller.dart';
 import 'package:firebase_flutter/pages/Auth/signIn_page.dart';
@@ -24,13 +25,14 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<Object?>(
+    return StreamBuilder<User?>(
         stream: authC.authStateChanges,
         builder: (context, snapshot) {
           print(snapshot.data);
           if (snapshot.connectionState == ConnectionState.active) {
             return GetMaterialApp(
-              home: snapshot.hasData ? HomePage() : SignInPage()
+              
+              home: snapshot.data != null && snapshot.data!.emailVerified == true ? HomePage() : SignInPage()
             );
           }
           return const MaterialApp(
