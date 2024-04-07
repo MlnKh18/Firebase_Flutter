@@ -30,4 +30,22 @@ kemudian menggunakan get() untuk mengambil hasilnya:z
       onError: (e) => print("Error completing: $e"),
     );
   }
+
+  //Get RealTime Data
+//   void getDataRealTime() {
+//   final docRef = db.collection("cities").doc("SF");
+//   docRef.snapshots().listen(
+//     (event) {
+//       print("current data: ${event.data()}");
+//     },
+//     onError: (error) {
+//       print("Listen failed: $error");
+//     },
+//   );
+// }
+
+Stream<QuerySnapshot<Object?>> getDataRealTime() {
+    final docRef = db.collection("user"); // Ganti "user" dengan koleksi yang sesuai
+    return docRef.snapshots();
+  }
 }

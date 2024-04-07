@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
           print(snapshot.data);
           if (snapshot.connectionState == ConnectionState.active) {
             return GetMaterialApp(
+                debugShowCheckedModeBanner: false,
                 home: snapshot.data != null &&
                         snapshot.data!.emailVerified == true
                     ? HomePage()

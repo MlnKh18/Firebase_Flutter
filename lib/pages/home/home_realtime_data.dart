@@ -1,36 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_flutter/controller/auth_controller.dart';
 import 'package:firebase_flutter/controller/home_controller.dart';
-import 'package:firebase_flutter/pages/home/home_realtime_data.dart';
 import 'package:firebase_flutter/widget/alert_dialog_form.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class HomePage extends StatelessWidget {
-  final HomeController homeC = Get.put(HomeController());
-
-  HomePage({Key? key}) : super(key: key);
+class RealTimeDataPage extends StatelessWidget {
+  final HomeController homeC = Get.find();
 
   @override
   Widget build(BuildContext context) {
-    final AuthController authC = Get.find();
-
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Home Page"),
-        actions: [
-          IconButton(
-            onPressed: () => authC.logout(),
-            icon: const Icon(Icons.logout_outlined),
-          ),
-          IconButton(
-            onPressed: () => Get.to( RealTimeDataPage()),
-            icon: const Icon(Icons.data_array),
-          ),
-        ],
+        title: Text('Real Time Data'),
       ),
-      body: FutureBuilder(
-        future: homeC.getDataUser(),
+      body: StreamBuilder(
+        stream: homeC.getDataRealTime(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -41,18 +25,13 @@ class HomePage extends StatelessWidget {
               child: Text('Error: ${snapshot.error}'),
             );
           } else {
-            /// Baris `final data = snapshot.data!.docs;` sedang mengekstraksi dokumen dari
-            /// Objek `QuerySnapshot` yang diperoleh dari operasi pengambilan data asinkron
-            /// dari Firestore.
             final data = snapshot.data!.docs;
             return ListView.builder(
               itemCount: data.length,
               itemBuilder: (context, index) {
                 final document = data[index];
-                final name =
-                    document['name']; // Ganti 'name' dengan field yang sesuai
-                final age =
-                    document['age']; // Ganti 'age' dengan field yang sesuai
+                final name = document['name'];
+                final age = document['age'];
 
                 return ListTile(
                   title: Text("Name: $name"),
