@@ -31,9 +31,10 @@ class MyApp extends StatelessWidget {
           print(snapshot.data);
           if (snapshot.connectionState == ConnectionState.active) {
             return GetMaterialApp(
-              
-              home: snapshot.data != null && snapshot.data!.emailVerified == true ? HomePage() : SignInPage()
-            );
+                home: snapshot.data != null &&
+                        snapshot.data!.emailVerified == true
+                    ? HomePage()
+                    : SignInPage());
           }
           return const MaterialApp(
             home: Scaffold(
