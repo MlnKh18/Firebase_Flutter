@@ -1,7 +1,6 @@
 import 'package:firebase_flutter/controller/auth_controller.dart';
 import 'package:firebase_flutter/pages/auth/forget_password.dart';
 import 'package:firebase_flutter/pages/auth/signUp_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,28 +20,28 @@ class SignInPage extends StatelessWidget {
           children: <Widget>[
             TextFormField(
               controller: authC.emailC,
-              decoration: InputDecoration(hintText: 'email'),
+              decoration: const InputDecoration(hintText: 'email'),
             ),
             TextFormField(
               controller: authC.passwordC,
-              decoration: InputDecoration(hintText: 'password'),
+              decoration: const InputDecoration(hintText: 'password'),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 10),
+              padding: const EdgeInsets.symmetric(vertical: 10),
               child: ElevatedButton(
                 onPressed: () => authC.signIn(
                     email: authC.emailC.text, password: authC.passwordC.text),
-                child: Text("Submit"),
+                child: const Text("Submit"),
               ),
             ),
             ElevatedButton(
-                onPressed: () => Get.to(() => SignUpPage()),
-                child: Text("Daftar")),
+                onPressed: () => Get.to(() => const SignUpPage()),
+                child: const Text("Daftar")),
             Align(
               alignment: Alignment.bottomRight,
               child: TextButton(
-                child: Text('Reset Password'),
-                onPressed: () => Get.to(() => ResetPassword()),
+                child: const Text('Reset Password'),
+                onPressed: () => Get.to(() => const ResetPassword()),
               ),
             ),
           ],

@@ -12,8 +12,7 @@ class AuthController extends GetxController {
   /// Baris `late Rx<User?> _user = Rx<User?>(null);` membuat variabel reaktif bertipe `_user`
   /// `Rx<User?>` yang akan digunakan untuk mengamati perubahan status otentikasi pengguna. Kelas `Rx` adalah
   /// disediakan oleh paket GetX di Flutter dan digunakan untuk pemrograman reaktif.
-  late Rx<User?> _user =
-      Rx<User?>(null); // Tambahkan Rx untuk mengamati perubahan User
+  final Rx<User?> _user = Rx<User?>(null); // Tambahkan Rx untuk mengamati perubahan User
 
   @override
   void onInit() {
@@ -71,12 +70,12 @@ class AuthController extends GetxController {
           },
           confirmtxt: "okee");
     } catch (e) {
-      print("Eerror r : ${e}");
+      print("Eerror r : $e");
     }
   }
 
   Future<void> resetPassword({required String email}) async {
-    if (email == null && GetUtils.isEmail(email)) {
+    if (email.isEmpty && GetUtils.isEmail(email)) {
       AlertDialog().alertdialog(
           titletxt: "Terjadi kesalahan", midtxt: 'tidak dapat mengirim' ,onpressed: () {
             Get.back();
@@ -100,7 +99,7 @@ class AuthController extends GetxController {
     try {
       await auth.signOut();
       Get.offAll(
-          () => SignInPage()); // Menggunakan Get.offAll untuk mengganti halaman
+          () => const SignInPage()); // Menggunakan Get.offAll untuk mengganti halaman
     } catch (e) {
       print(e);
     }

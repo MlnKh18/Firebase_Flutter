@@ -3,23 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AlertForm extends StatelessWidget {
-  const AlertForm({Key? key});
+  const AlertForm({super.key,});
 
   @override
   Widget build(BuildContext context) {
     final addUserC = Get.put(AddUserController());
     return AlertDialog(
-      title: Text('Input Form'),
+      title: const Text('Input Form'),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           TextFormField(
             controller: addUserC.nameC,
-            decoration: InputDecoration(labelText: 'Name'),
+            decoration: const InputDecoration(labelText: 'Name'),
           ),
           TextField(
             controller: addUserC.ageC,
-            decoration: InputDecoration(labelText: 'Age'),
+            decoration: const InputDecoration(labelText: 'Age'),
           ),
         ],
       ),
@@ -31,7 +31,7 @@ class AlertForm extends StatelessWidget {
                 name: addUserC.nameC.text, age: int.parse(addUserC.ageC.text));
             Get.back();
           },
-          child: Text('Update'),
+          child: const Text('Update'),
         ),
         ElevatedButton(
           onPressed: () {
@@ -42,7 +42,7 @@ class AlertForm extends StatelessWidget {
                 name: addUserC.nameC.text, age: int.parse(addUserC.ageC.text));
             Get.back();
           },
-          child: Text('add'),
+          child: const Text('add'),
         ),
       ],
     );

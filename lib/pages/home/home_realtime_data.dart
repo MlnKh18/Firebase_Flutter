@@ -7,17 +7,27 @@ import 'package:get/get.dart';
 class RealTimeDataPage extends StatelessWidget {
   final HomeController homeC = Get.find();
 
+  RealTimeDataPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Real Time Data'),
+        leading: IconButton(
+            onPressed: () => Get.back(), icon: const Icon(Icons.arrow_back)),
+        title: const Text('Real Time Data'),
       ),
-      body: StreamBuilder(
+      body:
+
+          /// Widget `StreamBuilder` di Flutter digunakan untuk mendengarkan aliran data dan membangun kembali
+          /// dirinya sendiri setiap kali data baru tersedia di aliran. Dalam cuplikan kode yang disediakan, file
+          /// `StreamBuilder` mendengarkan aliran yang dikembalikan oleh metode `homeC.getDataRealTime()`,
+          /// yang kemungkinan merupakan aliran data dari database real-time seperti Firestore.
+          StreamBuilder(
         stream: homeC.getDataRealTime(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (snapshot.hasError) {
@@ -46,7 +56,7 @@ class RealTimeDataPage extends StatelessWidget {
         onPressed: () {
           showDialog(
             context: context,
-            builder: (_) => AlertForm(),
+            builder: (_) => const AlertForm(),
           );
         },
         child: const Icon(Icons.add),

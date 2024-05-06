@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
             icon: const Icon(Icons.logout_outlined),
           ),
           IconButton(
-            onPressed: () => Get.to( RealTimeDataPage()),
+            onPressed: () => Get.to(() =>  RealTimeDataPage()),
             icon: const Icon(Icons.data_array),
           ),
         ],
@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
         future: homeC.getDataUser(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (snapshot.hasError) {
@@ -67,7 +67,7 @@ class HomePage extends StatelessWidget {
         onPressed: () {
           showDialog(
             context: context,
-            builder: (_) => AlertForm(),
+            builder: (_) => const AlertForm(),
           );
         },
         child: const Icon(Icons.add),

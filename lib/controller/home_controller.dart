@@ -4,9 +4,7 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
   final db = FirebaseFirestore.instance;
 
-  /**
-   * Mengambil semua data dari koleksi
-   */
+  /// Mengambil semua data dari koleksi
   Future<QuerySnapshot> getData() async {
     final user = await db.collection("user").get();
     return user;

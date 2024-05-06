@@ -2,8 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_flutter/controller/auth_controller.dart';
 import 'package:firebase_flutter/pages/Auth/signIn_page.dart';
-import 'package:firebase_flutter/pages/home/home_page.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:firebase_flutter/qury_data/queryData_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -34,8 +33,8 @@ class MyApp extends StatelessWidget {
                 debugShowCheckedModeBanner: false,
                 home: snapshot.data != null &&
                         snapshot.data!.emailVerified == true
-                    ? HomePage()
-                    : SignInPage());
+                    ? QueryDataPages()
+                    : const SignInPage());
           }
           return const MaterialApp(
             home: Scaffold(
@@ -45,5 +44,3 @@ class MyApp extends StatelessWidget {
         });
   }
 }
-
-// Stream _initialize() {}
